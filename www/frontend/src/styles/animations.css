@@ -1,0 +1,48 @@
+.page-exit-active,
+.page-exit {
+    z-index: 1;
+}
+
+.page-enter-active,
+.page-enter {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.page-exit.page-exit-active{
+    animation: opacity_exit 1s ease both;
+}
+
+.page-enter-done {
+    position: relative;
+}
+
+.page-wrap.page-enter-done:not(.page-appear):not(.page-appear-done),
+.page-enter.page-enter-active:not(.page-appear):not(.page-appear-done):not(.page-enter-done) {
+    opacity: 0;
+    animation: opacity_enter 1s ease both;
+    animation-delay: 1s;
+}
+
+@keyframes opacity_enter {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes opacity_exit {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

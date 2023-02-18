@@ -1,0 +1,94 @@
+version: '3.3'
+services:
+  spa_mysql:
+    image: mysql:8
+    container_name: spa_mysql
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DB
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+    restart: always
+    command: "--default-authentication-plugin=mysql_native_password"
+    networks:
+      - spa-network
+
+  spa_wordpress:
+    #image: wordpress:php7.4-fpm-alpine
+    build:
+      dockerfile: ./docker/wordpress/Dockerfile
+      context: ./
+    container_name: spa_wordpress
+    volumes:
+      - ./www:/var/www/html
+      - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    env_file: .env
+    depends_on:
+      - spa_mysql
+    ports:
+      - 85:80
+    environment:
+      UPLOAD_LIMIT: 500M
+      WORDPRESS_DB_HOST: spa_mysql
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      WORDPRESS_DB_NAME: $MYSQL_DB
+      WORDPRESS_DB_USER: $MYSQL_USER
+      WORDPRESS_DB_PASSWORD: $MYSQL_PASSWORD
+      WORDPRESS_TABLE_PREFIX: wp_
+    links:
+      - spa_mysql
+    restart: always
+    networks:
+      - spa-network
+
+  spa_nginx:
+    image: nginx:latest
+    container_name: spa_nginx
+    volumes:
+      - ./docker/nginx:/etc/nginx/conf.d
+      - ./www:/var/www/html
+    env_file: .env
+    ports:
+      #- 85:80
+      - 86:81
+    links:
+      - spa_wordpress
+    depends_on:
+      - spa_mysql
+      - spa_phpmyadmin
+    networks:
+      - spa-network
+
+  spa_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: spa_pma
+    environment:
+      PMA_HOST: spa_mysql
+    depends_on:
+      - spa_mysql
+    ports:
+        - 82:80
+    networks:
+      - spa-network
+  # adminer:
+  #   image: adminer
+  #   container_name: spa_adminer
+  #   ports:
+  #     - 8080:8080
+  #   links:
+  #    - db 
+
+volumes:
+  spa_phpmyadmin:
+    driver: local
+  spa_wordpress:
+    driver: local
+  spa_mysql:
+    driver: local
+
+networks:
+  spa-network:
+    driver: bridge

@@ -1,0 +1,18 @@
+# Create AkinaySau(akinaysau@gmail.com)
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Sau\WP\Plugin\Core\:
+        resource: '../src/*'
+        #exclude: '../src/{Kernel.php}'
+
+    #Carbon
+    Sau\WP\Core\Carbon\Carbon:
+        public: false
+        arguments: ['@service_container','@carbon_collector','@twig']
+    carbon:
+        alias: Sau\WP\Core\Carbon\Carbon
+        public: true

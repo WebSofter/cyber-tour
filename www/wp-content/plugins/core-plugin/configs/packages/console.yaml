@@ -1,0 +1,6 @@
+# Create AkinaySau(akinaysau@gmail.com)
+console:
+    make:
+        namespace: 'Sau\WP\Plugin\Core\'
+        src: 'src'
+

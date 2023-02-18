@@ -1,0 +1,27 @@
+{# Create AkinaySau(akinaysau@gmail.com) #}
+{% spaceless %}
+    <!DOCTYPE html>
+    <html {{ ln_attributes() }}>
+    <head>
+        {% block head %}{% endblock %}
+        {{ wp_head() }}
+    </head>
+    <body {%- block body_attr -%}{%- endblock -%}>
+
+    {% block before_header %}{% endblock %}
+    {% block header %}{% endblock %}
+    {% block after_header %}{% endblock %}
+
+    {% block body_before %}{% endblock %}
+    {% block body %}
+    {% endblock %}
+    {% block body_after %}{% endblock %}
+
+    {% block before_footer %}{% endblock %}
+    {% block footer %}{% endblock %}
+    {% block after_footer %}
+        {{ wp_footer() }}
+    {% endblock %}
+    </body>
+    </html>
+{% endspaceless %}

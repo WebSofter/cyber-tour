@@ -1,0 +1,33 @@
+{
+	"name": "sau/wp-core-plugin",
+	"license": "BSD-3-Clause",
+	"version": "1.0.5",
+	"authors": [
+		{
+			"name": "Akinay Sau",
+			"email": "akinay.sau@gmail.com",
+			"homepage": "http://sauri.wp",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"sau/wp-core": "^1.1.15",
+		"filp/whoops": "^2.4",
+		"sau/wp-settings-api": "^1.0",
+		"vlucas/phpdotenv": "^4.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Sau\\WP\\Plugin\\Core\\": "src/"
+		}
+	},
+	"repositories": [
+		{
+			"type": "path",
+			"url": "~/MyProjects/wp-core",
+			"options": {
+				"symlink": true
+			}
+		}
+	]
+}

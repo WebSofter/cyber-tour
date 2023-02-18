@@ -1,0 +1,6 @@
+docker/mysql
+www/wp-admin/
+www/wp-includes/
+www/wp-content/themes
+www/wp-content/upgrade
+www/wp-content/languages

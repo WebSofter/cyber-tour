@@ -1,0 +1,26 @@
+## Поменять в базе
+
+@@@userpassword
+$P$BuFB1xU5JvuhIqsqnM2YrmYQ93HJri0 > $P$BF8a4NqmmToENnuI7QaQkutf/PNAwl.
+
+@@@useremail
+mail.websofter@yandex.ru > homespadesign@yandex.ru
+
+@@@backend url
+http://spa-backend.wsofter.com > http://api.homespadesign.ru
+
+@@@loaclpath
+/var/www/html > /var/www/u0996510/data/api.homespadesign
+
+## Поменять в фронте
+@@@hostLocal
+в файле /home/spa/www/frontend/src/constants/urls.js
+hostLocal = 'http://spa-backend.wsofter.com/wp-json/';
+на 
+hostLocal = 'http://api.homespadesign.ru/wp-json/';
+
+
+Фронт работет по адресу homespadesign.ru
+
+
+

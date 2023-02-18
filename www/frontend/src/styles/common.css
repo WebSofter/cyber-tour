@@ -1,0 +1,164 @@
+@import "../../node_modules/slick-carousel/slick/slick.css";
+@import "../../node_modules/slick-carousel/slick/slick-theme.css";
+
+body {
+    background: #303675;
+}
+
+#root {
+    overflow: hidden;
+}
+
+.page-main {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 60px 0 200px;
+}
+
+.page-wrap::before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 150vh;
+    left: 0;
+    top: 0;
+    background: #1e0043;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.section {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding: 0 70px;
+    margin: 0 auto;
+}
+
+.inner-container {
+    display: block;
+    position: relative;
+    width: calc(100% / 12 * 10);
+    max-width: 1500px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.inner-container-fc {
+    display: block;
+    position: relative;
+    width: calc(100% / 12 * 10);
+    max-width: 1500px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.narrow-container {
+    display: block;
+    position: relative;
+    width: calc(100% / 12 * 8);
+    max-width: 1200px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.title-container._space {
+    margin-bottom: 70px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0 0 transparent inset;
+    transition: background-color 9999999s linear 0s;
+    caret-color: #fff;
+}
+
+
+.rotated-text {
+    display: block;
+    overflow: hidden;
+    width: 1em;
+    line-height: 1 !important;
+}
+
+.rotated-text span {
+    font-size: inherit;
+    display: inline-block;
+    white-space: nowrap;
+    transform: rotate(270deg);
+    transform-origin: 50% 50%;
+}
+
+.rotated-text span:before {
+    content: "";
+    float: left;
+    padding-top: 100%;
+}
+
+
+@media only screen and (max-width: 1500px) {
+    .page-main {
+        padding: 50px 0 150px;
+    }
+    
+    .inner-container {
+        width: calc(100% / 12 * 11);
+    }
+    
+    .inner-container-fc {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .page-main {
+        padding: 40px 0 100px;
+    }
+    
+    .container {
+        padding: 0 30px;
+    }
+    
+    .inner-container {
+        width: 100%;
+    }
+
+    .narrow-container {
+        width: calc(100% / 12 * 11);
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .page-main {
+        padding: 20px 0 50px;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+
+    .inner-container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .narrow-container {
+        width: 100%;
+        padding: 0;
+    }
+}
